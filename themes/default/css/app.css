@@ -1,0 +1,149 @@
+:root {
+  color-scheme: light;
+  --page: #f7f7f4;
+  --surface: #ffffff;
+  --ink: #172026;
+  --muted: #66737f;
+  --line: #dfe4e8;
+  --accent: #0f766e;
+  --accent-ink: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--page);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.site-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.site-header__inner,
+.site-main {
+  width: min(100% - 32px, 1040px);
+  margin: 0 auto;
+}
+
+.site-header__inner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-brand {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px 18px;
+}
+
+.site-nav a {
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.site-main {
+  padding: 56px 0;
+}
+
+.content {
+  max-width: 720px;
+}
+
+.content h1 {
+  margin: 0 0 16px;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.content p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.content :last-child {
+  margin-bottom: 0;
+}
+
+.content code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #eef2f3;
+  color: var(--ink);
+  font-size: 0.9em;
+}
+
+.content .button,
+.content a.button {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 680px) {
+  .site-header__inner {
+    min-height: auto;
+    padding: 18px 0;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+  }
+
+  .site-main {
+    padding: 40px 0;
+  }
+
+  .content h1 {
+    font-size: 32px;
+  }
+}

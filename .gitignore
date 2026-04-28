@@ -1,0 +1,57 @@
+# Evo core is installed separately and is not part of the preset repo.
+/core/*
+!/core/custom/
+!/core/custom/**
+/manager/
+/install/
+
+# Root files produced by the Evo installer.
+/index.php
+/.htaccess
+/composer.json
+/composer.lock
+/vendor/
+/composer.phar
+/phpstan.neon
+
+# Runtime files.
+/assets/.thumbs/
+/assets/cache/
+/assets/temp/
+/assets/backup/
+/assets/export/
+/assets/files/
+/assets/captcha/
+/assets/fonts/
+/assets/import/
+/assets/docs/
+/assets/js/
+/assets/modules/index.html
+/assets/plugins/index.html
+/assets/snippets/index.html
+/assets/templates/index.html
+/assets/tvs/index.html
+/assets/site/index.html
+/core/custom/cache/
+/core/custom/storage/
+/core/custom/logs/
+/core/custom/config/app/providers/
+/core/custom/config/app/aliases/
+
+# Local databases and secrets.
+*.sqlite
+*.sqlite3
+/database.sqlite
+.env
+/core/custom/.env
+
+# Local tooling.
+/node_modules/
+npm-debug.log
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini

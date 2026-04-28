@@ -1,0 +1,13 @@
+{
+  "name": "evolution-cms-presets/default",
+  "description": "Default Evolution CMS preset package.",
+  "type": "library",
+  "license": "MIT",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "EvolutionCMS\\Default\\DefaultServiceProvider"
+      ]
+    }
+  }
+}
