@@ -28,21 +28,52 @@ themes/default/
 
 Evolution core, manager files, runtime cache, database files, and local secrets stay outside this repository.
 
-## Install
+## Install Through Evo Installer
 
-Install a clean Evolution CMS runtime first:
+The preset should be installed by the Evolution CMS installer, not applied manually as a second step. The installer creates the target project first, then copies this preset as the project-layer bootstrap.
 
-```bash
-evo install --branch=3.5.x --db-type=sqlite --db-name=database.sqlite --admin-username=admin --admin-email=admin@example.com --admin-password=change-me --admin-directory=manager --language=uk --cli --composer-update --composer-clear-cache
-```
-
-Apply the preset:
+From an installed `evo` binary:
 
 ```bash
-php core/artisan preset:install --from https://github.com/evolution-cms-presets/default.git --ref main --force
+evo install /path/to/my-site \
+  --cli \
+  --branch=3.5.x \
+  --db-type=sqlite \
+  --db-name=database.sqlite \
+  --admin-username=admin \
+  --admin-email=admin@example.com \
+  --admin-password=change-me \
+  --admin-directory=manager \
+  --language=uk \
+  --preset=evolution-cms-presets/default \
+  --preset-ref=main \
+  --composer-update \
+  --composer-clear-cache
 ```
 
-For local preset development:
+For local installer development from `/Users/dmi3yy/PhpstormProjects/Extras/installer`:
+
+```bash
+cd /Users/dmi3yy/PhpstormProjects/Extras/installer
+go run ./cmd/evo install /Users/dmi3yy/PhpstormProjects/Extras/dmi3yy.com \
+  --cli \
+  --branch=3.5.x \
+  --db-type=sqlite \
+  --db-name=database.sqlite \
+  --admin-username=admin \
+  --admin-email=admin@example.com \
+  --admin-password=change-me \
+  --admin-directory=manager \
+  --language=uk \
+  --preset=evolution-cms-presets/default \
+  --preset-ref=main \
+  --composer-update \
+  --composer-clear-cache
+```
+
+`evolution-cms-presets/default` is the preset source. The target project can still be committed and pushed as its own repository, for example `dmi3yy/dmi3yy.com`.
+
+For local preset development only, after a project already exists:
 
 ```bash
 php core/artisan preset:apply --source /path/to/default --preset default --force
