@@ -1,4 +1,4 @@
-# Evo core is installed separately and is not part of the preset repo.
+# Evo core and manager are installed separately and are not part of this project layer.
 /core/*
 !/core/custom/
 !/core/custom/**
@@ -15,22 +15,10 @@
 /phpstan.neon
 
 # Runtime files.
-/assets/.thumbs/
-/assets/cache/
-/assets/temp/
-/assets/backup/
-/assets/export/
-/assets/files/
-/assets/captcha/
-/assets/fonts/
-/assets/import/
-/assets/docs/
-/assets/js/
-/assets/modules/index.html
-/assets/plugins/index.html
-/assets/snippets/index.html
-/assets/templates/index.html
-/assets/tvs/index.html
+/assets/*
+!/assets/site/
+!/assets/site/**
+/assets/site/.htaccess
 /assets/site/index.html
 /core/custom/cache/
 /core/custom/storage/

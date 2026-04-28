@@ -6,6 +6,7 @@ Minimal project-layer preset for Evolution CMS 3.5.x. It is meant to be the smal
 
 ```text
 core/custom/
+  .gitignore
   composer.json
   config/
     cms/settings/ControllerNamespace.php
@@ -24,15 +25,38 @@ views/
   partials/header.blade.php
 themes/default/
   css/app.css
+.gitignore
 ```
 
 Evolution core, manager files, runtime cache, database files, and local secrets stay outside this repository.
 
 ## Install Through Evo Installer
 
-The preset should be installed by the Evolution CMS installer, not applied manually as a second step. The installer creates the target project first, then copies this preset as the project-layer bootstrap.
+The preset should be installed by the Evolution CMS installer, not applied manually as a second step. The installer creates the target project first, then copies this preset as the project-layer bootstrap. The preset does not install Extras by default.
 
-From an installed `evo` binary:
+### TUI Install
+
+Use TUI mode when you want the installer to ask for database, admin user, language, and optional Extras. This is the shortest default-preset install:
+
+```bash
+evo install /path/to/my-site \
+  --branch=3.5.x \
+  --preset=evolution-cms-presets/default
+```
+
+For a local preset checkout during preset development:
+
+```bash
+evo install /tmp/default-preset-check \
+  --branch=3.5.x \
+  --preset=/Users/dmi3yy/PhpstormProjects/Extras/Presets/default
+```
+
+Choose "No" on the Extras prompt when you want a clean default-project baseline.
+
+### CLI Install
+
+Use CLI mode when you want a fully non-interactive install:
 
 ```bash
 evo install /path/to/my-site \
@@ -45,9 +69,7 @@ evo install /path/to/my-site \
   --admin-password=change-me \
   --admin-directory=manager \
   --language=uk \
-  --preset=evolution-cms-presets/default \
-  --composer-update \
-  --composer-clear-cache
+  --preset=evolution-cms-presets/default
 ```
 
 For local installer development from `/Users/dmi3yy/PhpstormProjects/Extras/installer`:
@@ -64,9 +86,7 @@ go run ./cmd/evo install /Users/dmi3yy/PhpstormProjects/Extras/dmi3yy.com \
   --admin-password=change-me \
   --admin-directory=manager \
   --language=uk \
-  --preset=evolution-cms-presets/default \
-  --composer-update \
-  --composer-clear-cache
+  --preset=evolution-cms-presets/default
 ```
 
 `evolution-cms-presets/default` is the preset source. The target project can still be committed and pushed as its own repository, for example `dmi3yy/dmi3yy.com`.
@@ -84,12 +104,12 @@ go run ./cmd/evo install /tmp/default-preset-check \
   --admin-password=change-me \
   --admin-directory=manager \
   --language=uk \
-  --preset=/Users/dmi3yy/PhpstormProjects/Extras/Presets/default \
-  --composer-update \
-  --composer-clear-cache
+  --preset=/Users/dmi3yy/PhpstormProjects/Extras/Presets/default
 ```
 
 Use `--preset=evolution-cms-presets/default@dev` when you want the installer to pull a development branch or tag from GitHub.
+
+After install, the generated project `.gitignore` keeps Evolution core, manager, runtime cache, local SQLite databases, and IDE files out of the site repository. A fresh `git status` should show only the project layer: `core/custom`, `views`, `themes/default`, `robots.txt`, and `.gitignore`.
 
 ## Development Contract
 
