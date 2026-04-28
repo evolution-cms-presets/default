@@ -46,7 +46,6 @@ evo install /path/to/my-site \
   --admin-directory=manager \
   --language=uk \
   --preset=evolution-cms-presets/default \
-  --preset-ref=main \
   --composer-update \
   --composer-clear-cache
 ```
@@ -66,20 +65,31 @@ go run ./cmd/evo install /Users/dmi3yy/PhpstormProjects/Extras/dmi3yy.com \
   --admin-directory=manager \
   --language=uk \
   --preset=evolution-cms-presets/default \
-  --preset-ref=main \
   --composer-update \
   --composer-clear-cache
 ```
 
 `evolution-cms-presets/default` is the preset source. The target project can still be committed and pushed as its own repository, for example `dmi3yy/dmi3yy.com`.
 
-For local preset development only, after a project already exists:
+For local preset development, point the installer at the preset checkout:
 
 ```bash
-php core/artisan preset:apply --source /path/to/default --preset default --force
+go run ./cmd/evo install /tmp/default-preset-check \
+  --cli \
+  --branch=3.5.x \
+  --db-type=sqlite \
+  --db-name=database.sqlite \
+  --admin-username=admin \
+  --admin-email=admin@example.com \
+  --admin-password=change-me \
+  --admin-directory=manager \
+  --language=uk \
+  --preset=/Users/dmi3yy/PhpstormProjects/Extras/Presets/default \
+  --composer-update \
+  --composer-clear-cache
 ```
 
-Use `--dry-run` to preview the copied files before applying.
+Use `--preset=evolution-cms-presets/default@dev` when you want the installer to pull a development branch or tag from GitHub.
 
 ## Development Contract
 
